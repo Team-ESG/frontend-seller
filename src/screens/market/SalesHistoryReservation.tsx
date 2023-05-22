@@ -1,8 +1,31 @@
+import { useFocusEffect } from '@react-navigation/native';
+import { userState } from '@recoil/auth';
+import axios from 'axios';
 import React from 'react';
 import { Image, ScrollView, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
+import { useRecoilValue } from 'recoil';
 
 export default function SalesHistoryReservation(): JSX.Element {
+  const user = useRecoilValue(userState);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      axios
+        .get('http://52.78.81.8:8080/seller/reserveList', {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [])
+  );
+
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
       <View>

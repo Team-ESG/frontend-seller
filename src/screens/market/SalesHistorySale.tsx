@@ -2,15 +2,29 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { Image, ScrollView, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Entypo';
+import { useRecoilValue } from 'recoil';
+import { userState } from '@recoil/auth';
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function SalesHistorySale(): JSX.Element {
-  // useEffect(() => {
-  //   axios.get('http://52.78.81.8:8080/seller/itemList', {
-  //     headers: {
-  //       authorization: `Bearer ${user?.accessToken}`,
-  //     },
-  //   });
-  // }, []);
+  const user = useRecoilValue(userState);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      axios
+        .get('http://52.78.81.8:8080/seller/itemList', {
+          headers: {
+            authorization: `Bearer ${user?.accessToken}`,
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [])
+  );
 
   return (
     <ScrollView style={{ flex: 1, backgroundColor: '#FFF' }}>
