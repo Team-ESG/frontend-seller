@@ -5,10 +5,12 @@ import SalesHistoryTopTab from './SalesHistoryTopTab';
 import MarketDetail from '@screens/market/MarketDetail';
 import ProductRegister from '@screens/market/ProductRegister';
 import Setting from '@screens/user/Setting';
+import { useNavigation } from '@react-navigation/native';
 
 const Tab = createBottomTabNavigator();
 
 export default function BottomTab(): JSX.Element {
+  const navigation = useNavigation();
   return (
     <Tab.Navigator
       screenOptions={{
@@ -34,6 +36,17 @@ export default function BottomTab(): JSX.Element {
         options={{
           tabBarIcon: ({ focused }: any) =>
             focused ? <Text>가게정보</Text> : <Text>가게정보</Text>,
+          headerRight: () => (
+            <Text
+              style={{ color: '#49AC6A', fontSize: 18, fontWeight: 'bold' }}
+              onPress={() => navigation.navigate('EditMarket')}
+            >
+              수정
+            </Text>
+          ),
+          headerRightContainerStyle: {
+            paddingRight: 15,
+          },
         }}
       />
       <Tab.Screen
