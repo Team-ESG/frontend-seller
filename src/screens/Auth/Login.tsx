@@ -127,7 +127,6 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
     fontSize: 20,
-    fontFamily: 'Inter-Bold',
   },
   boldText: {
     fontWeight: '600',

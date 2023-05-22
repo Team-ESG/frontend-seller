@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { ScrollView, Text, View } from 'react-native';
 
 export default function MarketDetail(): JSX.Element {
   return (
-    <View>
+    <ScrollView style={{ flex: 1, backgroundColor: 'white' }}>
       <Text>가게정보</Text>
-    </View>
+    </ScrollView>
   );
 }

@@ -13,11 +13,10 @@ export default function BottomTab(): JSX.Element {
     <Tab.Navigator
       screenOptions={{
         tabBarLabelStyle: {
-          color: '#333',
           paddingBottom: 5,
         },
         tabBarStyle: {
-          paddingTop: 5,
+          padding: 5,
         },
       }}
     >
@@ -27,7 +26,6 @@ export default function BottomTab(): JSX.Element {
         options={{
           tabBarIcon: ({ focused }: any) =>
             focused ? <Text>판매내역</Text> : <Text>판매내역</Text>,
-          headerTitleAlign: 'left',
         }}
       />
       <Tab.Screen
@@ -36,7 +34,6 @@ export default function BottomTab(): JSX.Element {
         options={{
           tabBarIcon: ({ focused }: any) =>
             focused ? <Text>가게정보</Text> : <Text>가게정보</Text>,
-          headerTitleAlign: 'left',
         }}
       />
       <Tab.Screen
@@ -45,16 +42,14 @@ export default function BottomTab(): JSX.Element {
         options={{
           tabBarIcon: ({ focused }: any) =>
             focused ? <Text>상품등록</Text> : <Text>상품등록</Text>,
-          headerTitleAlign: 'left',
         }}
       />
       <Tab.Screen
-        name="세팅"
+        name="설정"
         component={Setting}
         options={{
           tabBarIcon: ({ focused }: any) =>
-            focused ? <Text>세팅</Text> : <Text>세팅</Text>,
-          headerTitleAlign: 'left',
+            focused ? <Text>설정</Text> : <Text>설정</Text>,
         }}
       />
     </Tab.Navigator>
